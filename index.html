@@ -8,6 +8,9 @@
 import define from "./index.js";
 import {Runtime, Library, Inspector} from "./runtime.js";
 
+import {Runtime, Inspector} from "@observablehq/runtime";
+import define from "b8cb7180463e17cb";
+  
 const runtime = new Runtime();
 const main = runtime.module(define, Inspector.into(document.body));
 

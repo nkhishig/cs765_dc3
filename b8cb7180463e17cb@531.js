@@ -1,7 +1,6 @@
 export default function define(runtime, observer) {
   const main = runtime.module();
-  const fileAttachments = new Map([["books_2.json",new URL("./files/550a669c8ba63b9be7b054e2fe9b48291ec332b721b51a0cf5e76072dd7de802468881ffca50913389b9f96605b1f243b070eec165b7867f185bedb73b2bc0dd",import.meta.url)]]);
-  main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
+
   main.variable(observer()).define(["md"], function(md){return(
 md`# Network of Stack Overflow Tags
 
@@ -87,43 +86,7 @@ This dataset has the following structure:
   return table;
 }
 );
-  main.variable(observer()).define(["md"], function(md){return(
-md` ## Why ?
-### Tarea Principal:
-**T1:** Explore how technological ecosystems are related to each other **{Explore, Topology}**
 
-### Tareas Secundarias:
-**T2:** Locate the relationship between different technologies  **{Locate, Paths}**
-
-**T3:** Visualize the membership of a technology to a specific group or cluster of related technologies **{Locate, Clusters}**
-`
-)});
-  main.variable(observer()).define(["md"], function(md){return(
-md` ## How ?
-
-The idiom used for this visualization is a type of network graph called **Force Directed Graph**. 
-
-- **Encode->Arrange->Separate:** D3 forces are used to separate and connect the nodes. Firstly, the 'link' force is used to connect related nodes. Secondly, a 'charge' force is used to separate unrelated (unlinked) nodes. Finally, a 'center' force makes the visualization stay centered in the viewbox.
-
-- **Encode->Map->Hue:** The resulting clustering categories are indicated using categorical hues.
-
-- **Manipulate->Select:** A tooltip creates a highlight of the chosen node and all its direct neighours including their node names.
-
-- **Manipulate->Change:** A drag simulation allows the user to move nodes and clusters around the viewbox to avoid **occlusion**. Also, the nodes have been forced to stay in the viewbox to prevent loss of information in case they might leave the viewbox due to 'charge' forces.
-
-- **Encode->Map->Motion:** A simulation when loading or changing the visualization highlights bonds between data.
-`
-)});
-  main.variable(observer()).define(["md"], function(md){return(
-md `## Example Insights
-
-- Darker green area represents a tech ecosystem closely related to web development, including for example JS, CSS, HTML, PHP and similar.
-
-- Nodes like 'java' create a bridge between different clusters. In this example it is linked to its own group containing java-related fields such as maven, eclipse or jsp (java server pages), but also to other categories such as operating systems (pink) or other object orientated programming languages (light green)
-
-- Tag groups such as [excel,vba] or [agile, tdd (test driven design)] are not often used in combination with other tags in Stack Overflows professional profiles.
-`
-)});
   main.variable(observer()).define(["md"], function(md){return(
 md `## Code`
 )});
@@ -254,66 +217,18 @@ simulation => {
       .on("end", dragended);
 }
 )});
-  main.variable(observer()).define(["md"], function(md){return(
-md `#### Color Code`
-)});
+
   main.variable(observer("color")).define("color", ["d3"], function(d3)
 {
   const scale = d3.scaleOrdinal(d3.schemeSet2);
   return d => scale(d.group)
 }
 );
-  main.variable(observer()).define(["md"], function(md){return(
-md `## Imports`
-)});
-  main.variable(observer()).define(["md"], function(md){return(
-md `#### Data Import`
-)});
+
   main.redefine("data", "./books_2.json")
-  main.variable(observer()).define(["md"], function(md){return(
-md `#### D3 Import`
-)});
   main.variable(observer("d3")).define("d3", ["require"], function(require){return(
 require("d3@5")
 )});
-  main.variable(observer()).define(["md"], function(md){return(
-md `## Acknowledgements`
-)});
-  main.variable(observer()).define(["md"], function(md){return(
-md `This visualization is based on the ideas and code of the following works of the following academics:
 
-M. Bostock: [Force Directed Graph](https://observablehq.com/@d3/force-directed-graph)
-
-A. Suarez: [Layout Highlights](https://bl.ocks.org/almsuarez/4333a12d2531d6c1f6f22b74f2c57102)
-
-T. Roth: [Bounding Box](https://tomroth.com.au/fdg-bounding-box/)
-
-All Stack Overflow user contributions are licensed under CC-BY-SA 3.0 with attribution required.
-`
-)});
-  main.variable(observer()).define(["md"], function(md){return(
-md`## MIT License
-
-### Copyright (c) 2019 Philipp Freiherr von Ulm-Erbach.
-<br>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.`
-)});
   return main;
 }

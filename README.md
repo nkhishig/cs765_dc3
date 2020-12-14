@@ -1,4 +1,4 @@
-# Network of Stack Overflow Tags
+# CS765 Design Challenge 3
 
 https://observablehq.com/d/b8cb7180463e17cb@531
 

@@ -269,9 +269,7 @@ md `## Imports`
   main.variable(observer()).define(["md"], function(md){return(
 md `#### Data Import`
 )});
-  main.variable(observer("data")).define("data", ["FileAttachment"], function(FileAttachment){return(
-FileAttachment("books_2.json").json()
-)});
+  main.redefine("data", d3.csv("./cities.csv", d3.autoType));
   main.variable(observer()).define(["md"], function(md){return(
 md `#### D3 Import`
 )});

@@ -1,0 +1,14 @@
+{
+  "name": "b8cb7180463e17cb",
+  "main": "b8cb7180463e17cb@531.js",
+  "version": "531.0.0",
+  "homepage": "https://observablehq.com/d/b8cb7180463e17cb",
+  "author": {
+    "name": "nkhishig",
+    "url": "https://observablehq.com/@nkhishig"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
